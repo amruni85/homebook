@@ -20,11 +20,11 @@
                     <tr>
                     <!-- <th>ID</th> -->
                     <th>Booking Date</th>
-                    <th>Checkin Date</th>
-                    <th>Checkout Date</th>
+                    <th>From - To</th>
+                    <th>Booked by</th>
+                    <th>Booked for</th>
                     <th>Notes</th>
-                    <th>Booked at</th>
-                    <th>&nbsp;</th>
+                    <th>Actions</th>
                     <tr>
                     </thead>
                     <tbody>
@@ -32,14 +32,13 @@
                     <tr>
                     <!-- <td>{{$homebook->id}}</td> -->
                     <td>{{$homebook->created_at}}</td>
-                    <td>{{$homebook->checkin}}</td>
-                    <td>{{$homebook->checkout}}</td>
+                    <td>{{$homebook->checkin}} - {{$homebook->checkout}}</td>
+                    <td>{{$homebook->user->name}}<br>{{$homebook->user->email}}</td>
+                    <td>Adult: {{$homebook->adult}}<br>Child: {{$homebook->child ? : '0'}}<br>Infant: {{$homebook->infant ? : '0'}}</td>
                     <td width="200">{{$homebook->notes ? : 'None'}}</td>
-                    <td>{{$homebook->created_at ? $homebook->created_at->diffForHumans():'No date update'}}</td>
                     <td>
                     <a href="{{route('admin:show', $homebook)}}" class="btn btn-secondary">View</a>
-                    <a href="{{route('admin:edit', $homebook)}}" class="btn btn-success">Edit</a>
-                    <a onclick="return confirm('Are you sure to cancel the booking?')" href="{{route('admin:delete', $homebook)}}" class="btn btn-danger">Delete</a>
+                    <a onclick="return confirm('Are you sure to delete the booking?')" href="{{route('admin:delete', $homebook)}}" class="btn btn-danger">Delete</a>
                     </td>
                     </tr>
                     @endforeach

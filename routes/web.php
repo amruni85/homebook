@@ -32,4 +32,6 @@ Route::get('/homebook/{homebook}/edit', [App\Http\Controllers\HomebookController
 Route::post('/homebook/{homebook}/edit', [App\Http\Controllers\HomebookController::class, 'update']);
 Route::get('/homebook/{homebook}/delete', [App\Http\Controllers\HomebookController::class, 'delete'])->name('homebook:delete');
 
-//Route::get('/admin', [App\Http\Controllers\HomebookController::class, 'index'])->name('admin:index');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin:index');
+Route::get('/admin/{homebook}/show', [App\Http\Controllers\AdminController::class, 'show'])->name('admin:show');
+Route::get('/admin/{homebook}/delete', [App\Http\Controllers\AdminController::class, 'delete'])->name('admin:delete');
