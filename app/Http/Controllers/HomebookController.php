@@ -11,7 +11,6 @@ class HomebookController extends Controller
 {
 
     public function index(){
-        //$trainings = \App\Models\Training::all();
         $homebooks = Homebook::all();
         return view('homebook.index')->with(compact('homebooks'));
     }
@@ -43,7 +42,7 @@ class HomebookController extends Controller
     }
 
     public function show(Homebook $homebook){
-        return view();
+        return view('homebook.show', compact('homebook'));
     }
 
 }
