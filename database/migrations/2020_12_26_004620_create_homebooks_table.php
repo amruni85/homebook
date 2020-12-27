@@ -20,7 +20,7 @@ class CreateHomebooksTable extends Migration
             $table->unsignedBigInteger('adult');
             $table->unsignedBigInteger('child')->nullable();
             $table->unsignedBigInteger('infant')->nullable();
-            $table->string('attachment');
+            $table->string('attachment')->nullable();;
             $table->text('notes')->nullable();
 
             $table->unsignedBigInteger('user_id');

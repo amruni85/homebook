@@ -10,8 +10,12 @@ class Homebook extends Model
     use HasFactory;
 
     protected $fillable = [
-        'checkin', 'checkout', 'adult', 'child', 'infant', 'attachment', 'notes', 'user_id'
+        'checkin', 'checkout', 'adult', 'child', 'infant', 'notes', 'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 
     
 }
