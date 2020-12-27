@@ -14,7 +14,9 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header">{{ __('My Booking') }}</div>
+                <div class="card-header">
+                    {{ __('My Booking') }} &nbsp;&nbsp; &nbsp;&nbsp; <a href="{{route('homebook:index')}}" class="btn btn-secondary">Back</a>
+                </div>
 
                 <div class="card-body">
                 <div class="row form-group">

@@ -37,12 +37,51 @@ class HomebookController extends Controller
         }
 
         return redirect()
-            ->back()
-            ->with(['alert' => 'Your booking has been successfully submitted. Thanks for choosing Abe Nor Homestay. See you soon!']);
+            ->route('homebook:index')
+            ->with([
+                'alert-type' => 'alert-success',
+                'alert' => 'Your booking has been saved. Thank you for choosing Abe Nor Homestay. Seen you soon!'
+            ]);
     }
 
     public function show(Homebook $homebook){
         return view('homebook.show', compact('homebook'));
+    }
+
+    public function edit(Homebook $homebook){
+        return view('homebook.edit', compact('homebook'));
+    }
+
+    public function update(Homebook $homebook, Request $request){
+        $homebook->update($request->only('notes', 'attachment'));
+
+        if($request->hasFile('attachment')){
+            $filename = $homebook->id.'-'.date("Y-m-d").'.'.$request->attachment->getClientOriginalExtension();
+            Storage::disk('public')->put($filename, File::get($request->attachment));
+            $homebook->update(['attachment'=>$filename]);
+        }
+
+        return redirect()
+            ->route('homebook:index')
+            ->with([
+                'alert-type' => 'alert-primary',
+                'alert' => 'Your booking has been updated.'
+            ]);
+    }
+
+    public function delete(Homebook $homebook){
+        
+        if ($homebook->attachment != null){
+            Storage::disk('public')->delete($homebook->attachment);
+        }
+        
+        $homebook->delete();
+        return redirect()
+            ->route('homebook:index')
+            ->with([
+                'alert-type' => 'alert-danger',
+                'alert' => 'Your booking has been cancelled.'
+            ]);
     }
 
 }

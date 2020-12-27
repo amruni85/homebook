@@ -28,3 +28,8 @@ Route::get('/homebook/create', [App\Http\Controllers\HomebookController::class, 
 Route::post('/homebook/create', [App\Http\Controllers\HomebookController::class, 'store']);
 
 Route::get('/homebook/{homebook}/show', [App\Http\Controllers\HomebookController::class, 'show'])->name('homebook:show');
+Route::get('/homebook/{homebook}/edit', [App\Http\Controllers\HomebookController::class, 'edit'])->name('homebook:edit');
+Route::post('/homebook/{homebook}/edit', [App\Http\Controllers\HomebookController::class, 'update']);
+Route::get('/homebook/{homebook}/delete', [App\Http\Controllers\HomebookController::class, 'delete'])->name('homebook:delete');
+
+//Route::get('/admin', [App\Http\Controllers\HomebookController::class, 'index'])->name('admin:index');
