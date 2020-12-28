@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-14">
             @if(session()->has('alert'))
             <div class="alert {{ session()->get('alert-type')}}">
                 {{ session()->get('alert') }}
@@ -20,8 +20,7 @@
                     <tr>
                     <th>ID</th>
                     <th>Booking Date</th>
-                    <th>Checkin Date</th>
-                    <th>Checkout Date</th>
+                    <th>From - To</th>
                     <th>Notes</th>
                     <th>Booked at</th>
                     <th>&nbsp;</th>
@@ -32,19 +31,19 @@
                     <tr>
                     <td>{{$homebook->id}}</td>
                     <td>{{$homebook->created_at}}</td>
-                    <td>{{$homebook->checkin}}</td>
-                    <td>{{$homebook->checkout}}</td>
-                    <td width="200">{{$homebook->notes ? : 'None'}}</td>
-                    <td>{{$homebook->created_at ? $homebook->created_at->diffForHumans():'No date update'}}</td>
+                    <td>{{$homebook->checkin}} - {{$homebook->checkout}}</td>
+                    <td>{{$homebook->notes ? : '-'}}</td>
+                    <td>{{$homebook->created_at->diffForHumans()}}</td>
                     <td>
-                    <a href="{{route('homebook:show', $homebook)}}" class="btn btn-secondary">See my booking</a>
-                    <a href="{{route('homebook:edit', $homebook)}}" class="btn btn-success">Edit my booking</a>
-                    <a onclick="return confirm('Are you sure to cancel the booking?')" href="{{route('homebook:delete', $homebook)}}" class="btn btn-danger">Cancel My Booking</a>
+                    <a href="{{route('homebook:show', $homebook)}}" class="btn btn-secondary">View</a>
+                    <a href="{{route('homebook:edit', $homebook)}}" class="btn btn-success">Edit</a>
+                    <a onclick="return confirm('Are you sure to cancel the booking?')" href="{{route('homebook:delete', $homebook)}}" class="btn btn-danger">Cancel</a>
                     </td>
                     </tr>
                     @endforeach
                     </tbody>
                     </table>
+                    {{ $homebooks->links()}}
                 </div>
             </div>
         </div>

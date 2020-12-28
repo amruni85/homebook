@@ -44,6 +44,7 @@
                     @endforeach
                     </tbody>
                     </table>
+                    {{ $homebooks->links()}}
                 </div>
             </div>
         </div>

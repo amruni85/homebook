@@ -11,7 +11,8 @@ class HomebookController extends Controller
 {
 
     public function index(){
-        $homebooks = Homebook::all();
+        //$homebooks = Homebook::all();
+        $homebooks = Homebook::paginate(5);
         return view('homebook.index')->with(compact('homebooks'));
     }
 

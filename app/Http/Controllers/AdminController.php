@@ -8,7 +8,8 @@ use App\Models\Homebook;
 class AdminController extends Controller
 {
     public function index(){
-        $homebooks = Homebook::all();
+        //$homebooks = Homebook::all();
+        $homebooks = Homebook::paginate(10);
         return view('admin.index')->with(compact('homebooks'));
     }
 

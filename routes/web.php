@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/homebook', [App\Http\Controllers\HomebookController::class, 'index'])->name('homebook:index');
 
 //Route::get('/homebook/index', [App\Http\Controllers\HomebookController::class, 'index'])->name('homebook:index');
-Route::get('/homebook/create', [App\Http\Controllers\HomebookController::class, 'create'])->name('homebook:create');
+Route::get('/homebook/create', [App\Http\Controllers\HomebookController::class, 'create'])->name('homebook:create')->middleware('auth');
 Route::post('/homebook/create', [App\Http\Controllers\HomebookController::class, 'store']);
 
 Route::get('/homebook/{homebook}/show', [App\Http\Controllers\HomebookController::class, 'show'])->name('homebook:show');
